@@ -12,8 +12,8 @@ class Node:
 
 map = []
 
-sizeY = 59 #79
-sizeX = 79 #126
+sizeY = 59 #79 #59
+sizeX = 79 #126 #79
 
 startPoint = (0,0)
 finishPoint = (sizeY-1,sizeX-1)
@@ -22,7 +22,6 @@ for y in range(0,sizeY):
     map.append([])
     for x in range(0,sizeX):
         map[y].append(0)
-
 
 def createMap():
     toPrint = ""
@@ -90,19 +89,19 @@ while done == False:
     x = nextShortestNode[1]
 
     if(x-1 >= 0 and map[y][x-1].visited == False):
-        map[y][x-1].distance = map[y][x].value + map[y][x-1].value
+        map[y][x-1].distance = map[y][x].distance + map[y][x-1].value
         map[y][x-1].predecessor = y,x
 
     if(x+1 < len(map[y]) and map[y][x+1].visited == False):
-        map[y][x+1].distance = map[y][x].value + map[y][x+1].value
+        map[y][x+1].distance = map[y][x].distance + map[y][x+1].value
         map[y][x+1].predecessor = y,x
 
     if(y-1 >= 0 and map[y-1][x].visited == False):
-        map[y-1][x].distance = map[y][x].value + map[y-1][x].value
+        map[y-1][x].distance = map[y][x].distance + map[y-1][x].value
         map[y-1][x].predecessor = y,x
        
     if(y+1 < len(map) and map[y+1][x].visited == False):
-        map[y+1][x].distance = map[y][x].value + map[y+1][x].value
+        map[y+1][x].distance = map[y][x].distance + map[y+1][x].value
         map[y+1][x].predecessor = y,x
 
     map[y][x].visited = True
